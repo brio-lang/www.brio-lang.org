@@ -18,4 +18,4 @@ $ mkdocs build
 
 ## Deployment
 
-The site www.brio-lang.org will remain up-to-date with the `main` branch.
+The site www.brio-lang.org will remain up-to-date with the `master` branch.
