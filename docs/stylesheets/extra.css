@@ -1,0 +1,24 @@
+.md-grid {
+    max-width: 1200px;
+}
+
+.md-content__inner {
+    padding-bottom: 2.75rem;
+}
+
+.md-header-nav__title{
+    margin-left: 0.25rem;
+}
+
+.md-footer-meta__inner{
+    display: none
+}
+
+.md-footer-nav{
+    height: 130px;
+}
+
+.md-typeset img{
+    max-width: 90%;
+    margin: 0 auto;
+}

@@ -1,0 +1,32 @@
+site_name: Brio Lang
+theme:
+  name: material
+  favicon: images/favicon.ico
+  logo: images/brio-logo-icon-white.png
+  palette:
+    primary: blue
+  language: en
+  features:
+    - navigation.tabs
+markdown_extensions:
+  - meta
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.keys
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - js/extra.js
+nav:
+  - Welcome:
+    - Welcome to Brio Lang: index.md
+  - Download:
+    - Download Brio Lang: download.md
+  - Tutorial:
+    - Brio Lang Tutorial: tutorial.md
+  - Examples:
+    - Brio Lang Examples: examples.md
+  - Language Reference:
+    - Language Reference: language.md
+  - FAQs:
+    - Frequently Asked Questions: faqs.md
