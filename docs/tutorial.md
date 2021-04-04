@@ -73,7 +73,7 @@ To see all available arguments, run `brio --help`.
 $ brio --help       
 ```
 ```
-brio-lang: version 0.8.0
+Brio 0.6.0
 usage: ./brio [-h] [-v] [-i] [-t] [-gv] [-sym] [-ast] FILE.brio
 
 optional arguments:
@@ -217,6 +217,13 @@ You can determine the size of a string using the built-in `size()` method:
 9
 >>> x.size()
 9
+```
+
+Positional string formatting is supported as well:
+```brio
+>>> let x = "Hello, {0} {1}!"
+>>> print(x.format("Brio", "Lang"))
+Hello, Brio Lang!
 ```
 
 ### Arrays
@@ -501,6 +508,10 @@ let y = "double quotes"
 | Method | Description |
 | ------ | ------ |
 | size | Returns an integer specifying the number of characters in the string.  |
+| format | Returns a formatted string, replacing "{0}", "{1}", and so on with provided values. |
+| isdigit | Returns true or false to indicate if numeric. |
+| isalpha | Returns true or false to indicate if alphabetic. |
+| split | Returns an array of strings, split by the specified character. |
 
 ### Boolean
 The `Boolean` data type is used to define `true` or `false` values.
@@ -795,7 +806,7 @@ hello from B!
 
 
 ## Standard Library
-The Brio Lang standard library is in its infancy and is missing key utilities around handling dates, serializing JSON or XML, working with regular expressions, etc. For the alpha release, there is an initial `csv` library which can be used. If you would like to contribute to the standard library, please visit us on [GitHub](https://github.com/brio-lang/brio).
+The Brio Lang standard library is in its infancy and is missing key utilities around handling dates, serializing XML, working with regular expressions, etc. If you would like to contribute to the standard library, please visit us on [GitHub](https://github.com/brio-lang/brio).
 
 ### csv
 The `csv` standard library makes it easy to read and write CSV files.
@@ -816,6 +827,25 @@ method main(){
     x = new csv.Reader(file)
     print(x.rows())
     file.close()
+}
+```
+
+### json
+The `json` standard library makes it easy to parse and stringify JSON.
+
+```brio
+import json
+
+method main(){
+    # parse JSON
+    let data = json.parse('{"foo": "bar", "valid": true}')
+    print(data["foo"])  # "bar"
+    print(data["valid"])  # true
+
+    # stringify JSON
+    data["valid"] = false
+    let output = json.dump(data)
+    print(output)  # {"foo": "bar", "valid": false}
 }
 ```
 

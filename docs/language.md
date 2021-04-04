@@ -121,6 +121,28 @@ For further examples please refer to the [tutorial](tutorial.md#control-flow).
 ## Data Model
 Every data type in Brio Lang derives from a common `Object` class. Objects have a type, an identity, and a value. The type will determine which operations are permissible, and also dictates acceptable values. 
 
+## Built-in Methods
+The following built-in methods are available in Brio:
+
+| Method | Description |
+| ---- | ---- |
+| print | Print the provided argument. |
+| range | Returns an array 0-n, where n is the supplied argument. |
+| traceback | Prints the traceback of an exception. |
+| input | Capture input from the user. |
+| size | Returns the size of an object. |
+| open | Returns a File object, accepts path to file and mode as arguments. |
+| close | Closes a File object. |
+| exit | Exits the program, accepts integer exit code as argument. |
+| boolean | Returns a boolean representation of provided argument. |
+| string | Returns a string representation of provided argument. |
+| integer | Returns an integer representation of provided argument. |
+| decimal | Returns a decimal representation of provided argument. |
+| arg | Returns the cmd line argument as the provided int position. |
+| getEnv | Returns an environment variable. |
+| httpGet | Perform an HTTP GET request. |
+| httpPost | Perform an HTTP POST request. |
+
 ## Abstract Syntax Tree
 The Brio Lang parser takes a stream of tokens provided by the lexer, and generates a homogenous abstract syntax tree which is walked and executed by the interpreter. Each statement in Brio Lang is comprised of a pattern of one or more tokens. Each logical construct is represented in the AST as a node that contains one or more children. 
 
@@ -168,7 +190,6 @@ With the revised AST and populated symbol table, the interpreter will begin to e
                 <while_stmt> |
                 <return_val> |
                 <class_inst> |
-                <method_call> ";" |
                 <import> |
                 <import_from> |
                 <expr>
@@ -193,7 +214,7 @@ With the revised AST and populated symbol table, the interpreter will begin to e
                 <statement> ")" <block> ";"
 <each_stmt> ::= "each" "(" <var_decl> ":" <expr> ")" <block> ";"
 <while_stmt> ::= "while" "(" <test> ")" <block> ";"
-<expr> ::= <var_assign> | <method_call> | <as> | <test>
+<expr> ::= <var_assign> | <as> | <test>
 <as> ::= <id> "as" <id>
 <test> ::= <boolop> | <bitop> | <binop>
 <boolop> ::= <term> "<" <test> |
@@ -215,8 +236,8 @@ With the revised AST and populated symbol table, the interpreter will begin to e
             <term> "&" <term> |
             <term> "|" <term>
 <parentheses> :: = "(" (<test>)+ ")"
-<term> ::= <id> | <int> | <decimal> | <string> | <parentheses> |
-           <array_list> | <member_asc> | <index_ascr> |
+<term> ::= <method_call> | <id> | <int> | <decimal> | <string> |
+           <parentheses> | <array_list> | <member_asc> | <index_ascr> |
            <bool> | <dictionary> | <none>
 <modifier> ::= "public" | "private"           
 <member_asc> ::= ["@"] (<id> .)* <id>

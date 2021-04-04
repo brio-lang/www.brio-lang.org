@@ -44,6 +44,7 @@ You may use the `--help` argument to see a full list of supported arguments.
 $ ./bin/brio --help
 ```
 ```
+Brio 0.6.0
 usage: ./brio [-h] [-v] [-i] [-t] [-gv] [-sym] [-ast] [-fcgi] FILE.brio
 
 optional arguments:
